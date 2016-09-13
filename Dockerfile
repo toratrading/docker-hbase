@@ -14,11 +14,8 @@ RUN \
                         software-properties-common \
                         curl \
                         nano \
-                        vim \
-                        htop \
                         tar \
                         ant \
-			ssh \
 			liblzo2-dev \
 			make \
 			supervisor \
@@ -45,7 +42,7 @@ ENV TERM=xterm
 USER root
 
 # Install hbase
-RUN curl -fLs http://apache.org/dist/hbase/${HBASE_VER}/hbase-${HBASE_VER}-bin.tar.gz | tar xzf - -C /opt && mv /opt/hbase-${HBASE_VER} /opt/hbase
+RUN curl -fLs http://archive.apache.org/dist/hbase/${HBASE_VER}/hbase-${HBASE_VER}-bin.tar.gz | tar xzf - -C /opt && mv /opt/hbase-${HBASE_VER} /opt/hbase
 
 # Add HBASE to path
 ENV PATH=/opt/hbase/bin:$PATH
@@ -75,6 +72,12 @@ RUN git clone git://github.com/cloudera/hadoop-lzo.git /tmp/lzo && \
 # test
 RUN hbase org.apache.hadoop.hbase.util.CompressionTest /tmp/test_file lzo
 ########################################
+
+############################# Cleanup
+RUN apt-get clean autoremove autoclean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm -rf /opt/hbase/docs
+###########################################
 
 ############################ EXPOSE PORTS
 # zookeeper

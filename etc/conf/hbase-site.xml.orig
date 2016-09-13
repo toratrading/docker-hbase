@@ -62,6 +62,19 @@
     the ZooKeeper ensemble. Set high to avoid zk connection issues running
     standalone and pseudo-distributed.</description>
   </property>
+    <property>
+    <name>hbase.bucketcache.ioengine</name>
+    <value>offheap</value>
+    <description>Where to store the contents of the bucketcache. One of: heap,
+      offheap, or file. If a file, set it to file:PATH_TO_FILE. See https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/io/hfile/CacheConfig.html for more information.
+    </description>
+  </property>
+  <property>
+    <name>hbase.bucketcache.size</name>
+    <value>1024</value>
+    <description>The size of the buckets for the bucketcache if you only use a single size.
+      Defaults to the default blocksize, which is 64 * 1024.</description>
+  </property>
 <property>
   <name>hbase.master.distributed.log.splitting</name>
   <value>false</value>
