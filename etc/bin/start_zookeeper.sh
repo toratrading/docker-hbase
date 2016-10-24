@@ -5,8 +5,7 @@ ${bin}/export_dist_mode.sh
 
 
 function stop_zookeeper {
-	echo "Stopping zookeeper..."
-	"$bin"/hbase-daemon.sh --config "${HBASE_CONF_DIR}" stop zookeeper
+	"$bin"/stop_zookeeper.sh
 	exit 0
 }
 

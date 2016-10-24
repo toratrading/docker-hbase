@@ -5,8 +5,7 @@ ${bin}/export_dist_mode.sh
 
 
 function stop_all {
-	echo "Stopping regionserver..."
-	"$bin"/hbase-daemon.sh --config "${HBASE_CONF_DIR}" stop regionserver
+	"$bin"/stop_regionserver.sh
 	exit 0
 }
 

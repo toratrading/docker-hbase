@@ -4,9 +4,7 @@ bin=`dirname ${0}`
 ${bin}/export_dist_mode.sh
 
 function stop_all {
-	echo "Stopping hbase daemons..."
-	# stop all hbase daemons (master and regionserver)
-	"$bin"/stop-hbase.sh
+	"$bin"/stop_master.sh
 	exit 0
 }
 
